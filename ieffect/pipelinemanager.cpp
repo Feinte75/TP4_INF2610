@@ -67,7 +67,7 @@ static DWORD WINAPI startHelper(LPVOID arg)
     stage->execute();
 
     qDebug() << " Ok ";
-    return NULL;
+    return 0;
 }
 
 #endif
@@ -142,7 +142,6 @@ void PipelineManager::launchParallel(int queueSize)
     }
 
     // Attendre la fin de l'exécution
-
     WaitForMultipleObjects(stageList.size(), threads, true, INFINITE);
 
     for (int i = 0; i < stageList.size(); i++) {
