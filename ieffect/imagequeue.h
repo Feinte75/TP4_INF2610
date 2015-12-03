@@ -18,10 +18,11 @@ public:
     bool isEmpty();
 private:
     int m_capacity;
+
     std::queue<QImage*> m_queue;
-    HANDLE m_sem_queue;
-    HANDLE m_sem_dequeue;
-    HANDLE m_safe_modif;
+    HANDLE m_sem_queue; // Semaphore pour ajouter des images a la queue
+    HANDLE m_sem_dequeue; // Semaphore pour retirer des images de la queue
+    HANDLE m_safe_modif; // Mutex pour proteger la queue de modifications concurrentes
 };
 
 #endif // IMAGEQUEUE_H
