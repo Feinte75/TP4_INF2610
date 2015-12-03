@@ -29,7 +29,7 @@ void ImageQueue::enqueue(QImage *item)
     ReleaseSemaphore(m_safe_modif, 1, NULL);
 
     // tracer la taille de la file lorsqu'elle change
-    SimpleTracer::writeEvent(this, 0);
+    SimpleTracer::writeEvent(this, m_queue.size());
 
     // Signaler qu une image peut être retiree de la queue
     ReleaseSemaphore(m_sem_dequeue, 1, NULL);
@@ -47,7 +47,7 @@ QImage *ImageQueue::dequeue()
     ReleaseSemaphore(m_safe_modif, 1, NULL);
 
     // tracer la taille de la file lorsqu'elle change
-    SimpleTracer::writeEvent(this, 0);
+    SimpleTracer::writeEvent(this, m_queue.size());
 
     // Signaler qu une image peut être ajoute a la queue
     ReleaseSemaphore(m_sem_queue, 1, NULL);
