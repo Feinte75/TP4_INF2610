@@ -31,7 +31,7 @@ void ImageQueue::enqueue(QImage *item)
     // tracer la taille de la file lorsqu'elle change
     SimpleTracer::writeEvent(this, 0);
 
-    // Signaler qu une image peut être retire de la queue
+    // Signaler qu une image peut être retiree de la queue
     ReleaseSemaphore(m_sem_dequeue, 1, NULL);
 }
 
